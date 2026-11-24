@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Harmony Clinical Center · Agenda</title>
+  <meta name="description" content="Agenda interna da Harmony Clinical Center — Dra. Fabiana Azevedo." />
+  <meta name="theme-color" content="#F8F6F1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/icon-192.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="HCC Agenda" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ======================= LOGIN ======================= -->
+  <section id="login" class="login" hidden>
+    <div class="login__art" aria-hidden="true">
+      <div class="aurora"><i></i><i></i><i></i></div>
+      <div class="grain"></div>
+      <div class="login__brand">
+        <div class="logo-shine logo-shine--xl"><img src="assets/logo.svg" alt="" width="132" height="132" /></div>
+        <p class="login__name">Harmony<em>Clinical Center</em></p>
+        <span class="login__rule"></span>
+        <p class="login__doc">Dra. Fabiana Azevedo</p>
+      </div>
+      <p class="login__legal">Sistema interno · acesso restrito</p>
+    </div>
+
+    <div class="login__panel">
+      <form id="form-login" class="login__card" autocomplete="on" novalidate>
+        <div class="logo-shine login__logo"><img src="assets/logo.svg" alt="HCC" width="64" height="64" /></div>
+        <p class="eyebrow">Acesso restrito</p>
+        <h1 class="login__title">Entrar na agenda</h1>
+        <p class="login__sub">Harmony Clinical Center</p>
+
+        <label class="field" for="login-usuario">
+          <span class="field__label">Usuário</span>
+          <span class="input-group" id="user-group">
+            <svg class="input-group__icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+            <input id="login-usuario" name="username" class="input" type="text" inputmode="email" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="seu usuário" required />
+            <span class="ghost" aria-hidden="true"><span class="ghost__typed" id="ghost-typed"></span><span class="ghost__sfx">@hcc.com</span></span>
+          </span>
+        </label>
+
+        <label class="field" for="login-senha">
+          <span class="field__label">Senha</span>
+          <span class="input-group">
+            <svg class="input-group__icon" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
+            <input id="login-senha" name="password" class="input" type="password" autocomplete="current-password" placeholder="••••••••" required />
+            <button type="button" class="input-group__btn" id="toggle-senha" aria-label="Mostrar senha" aria-pressed="false">
+              <svg class="eye-open" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg class="eye-off" viewBox="0 0 24 24"><path d="M3 3l18 18M10.6 5.1A10.5 10.5 0 0 1 12 5c6.4 0 10 7 10 7a17 17 0 0 1-3.1 3.9M6.6 6.6C3.8 8.4 2 12 2 12s3.6 7 10 7a9.6 9.6 0 0 0 5.4-1.6M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+            </button>
+          </span>
+          <span class="field__warn" id="caps-warn" hidden>Caps Lock ativado</span>
+        </label>
+
+        <p id="login-erro" class="form-error" role="alert" aria-live="assertive"></p>
+        <button class="btn btn--gold btn--block btn--lg" type="submit" id="btn-login">
+          <span class="btn__label">Entrar</span>
+          <span class="spinner" aria-hidden="true"></span>
+        </button>
+        <p class="login__foot">Esqueceu a senha? Fale com o administrador do sistema.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ======================= APP ======================= -->
+  <div id="app" class="app" hidden>
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo-shine"><img src="assets/logo.svg" alt="" width="42" height="42" /></div>
+        <div>
+          <strong class="brand__name">Harmony</strong>
+          <span class="brand__sub">Clinical Center</span>
+        </div>
+      </div>
+
+      <nav class="sidenav" aria-label="Principal">
+        <span class="sidenav__ind" aria-hidden="true"></span>
+        <button class="sidenav__item is-active" data-view="agenda"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Agenda</span><kbd>A</kbd></button>
+        <button class="sidenav__item" data-view="clientes"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c1.2-3.6 3.7-5.5 6.5-5.5s5.3 1.9 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18.5 14.8c1.4.9 2.4 2.6 3 5.2"/></svg><span>Clientes</span><kbd>C</kbd></button>
+        <button class="sidenav__item" data-view="financeiro"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><rect x="5" y="11" width="3" height="6" rx="1"/><rect x="10.5" y="6" width="3" height="11" rx="1"/><rect x="16" y="13" width="3" height="4" rx="1"/></svg><span>Financeiro</span><kbd>F</kbd></button>
+        <button class="sidenav__item" data-view="ajustes"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg><span>Ajustes</span></button>
+      </nav>
+
+      <button class="btn btn--gold btn--block" data-action="novo"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Novo agendamento<kbd class="kbd--light">N</kbd></button>
+
+      <div class="sidebar__foot">
+        <div class="me">
+          <span class="avatar avatar--sm" id="me-avatar">—</span>
+          <div class="me__info"><strong id="me-name">—</strong><span id="me-setor">—</span></div>
+          <button class="icon-btn icon-btn--ghost" data-action="sair" aria-label="Sair" title="Sair"><svg viewBox="0 0 24 24"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 17l5-5-5-5M15 12H3"/></svg></button>
+        </div>
+        <p class="conn"><span class="status-dot" id="status-dot"></span><span id="status-text">Conectando…</span></p>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="topbar__left">
+          <div class="logo-shine topbar__logo"><img src="assets/logo.svg" alt="" width="36" height="36" /></div>
+          <div class="topbar__titles">
+            <p class="eyebrow" id="setor-label">Estética</p>
+            <h1 class="topbar__title"><span id="view-title">Agenda</span></h1>
+          </div>
+        </div>
+        <div class="topbar__right">
+          <span class="conn-pill" id="conn-pill" title="Conexão"><span class="status-dot" id="status-dot-m"></span></span>
+          <button class="icon-btn" data-action="sair" aria-label="Sair" title="Sair"><svg viewBox="0 0 24 24"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 17l5-5-5-5M15 12H3"/></svg></button>
+        </div>
+      </header>
+
+      <!-- ========== AGENDA ========== -->
+      <section class="view is-active" id="view-agenda" data-title="Agenda">
+        <div id="agenda-banner"></div>
+        <div class="agenda">
+          <div class="agenda__side">
+            <div class="card calendar" id="calendar"></div>
+            <div class="card summary" id="day-summary"></div>
+          </div>
+
+          <div class="agenda__main">
+            <div class="daybar">
+              <button class="icon-btn" data-day="-1" aria-label="Dia anterior" title="Dia anterior (←)"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
+              <button class="daybar__date" id="daybar-date" aria-label="Escolher data">
+                <span class="daybar__rel" id="daybar-rel">Hoje</span>
+                <strong class="daybar__full" id="daybar-full">—</strong>
+              </button>
+              <input type="date" id="daybar-picker" class="visually-hidden" tabindex="-1" aria-hidden="true" />
+              <button class="chip chip--today" id="btn-hoje" title="Voltar para hoje (T)">Hoje</button>
+              <button class="icon-btn" data-day="1" aria-label="Próximo dia" title="Próximo dia (→)"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
+            </div>
+
+            <div class="weekstrip" id="weekstrip" aria-label="Semana"></div>
+            <div class="stats" id="summary-chips"></div>
+
+            <div class="timeline-head">
+              <p class="timeline-head__count" id="timeline-count"></p>
+              <label class="switch">
+                <input type="checkbox" id="toggle-livres" checked />
+                <span class="switch__track"><span class="switch__thumb"></span></span>
+                <span>Horários livres</span>
+              </label>
+            </div>
+            <div class="timeline-wrap" id="timeline-wrap">
+              <ol class="timeline" id="timeline" aria-live="polite"></ol>
+              <div class="nowline" id="nowline" hidden><span class="nowline__tag" id="nowline-tag">—</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== CLIENTES ========== -->
+      <section class="view" id="view-clientes" data-title="Clientes">
+        <div class="searchbar">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="busca" class="input input--search" type="search" placeholder="Buscar por nome, telefone ou procedimento" autocomplete="off" enterkeyhint="search" />
+          <button class="searchbar__clear" id="busca-clear" aria-label="Limpar busca" hidden><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+        </div>
+        <div class="segmented" id="sort-seg" role="tablist" aria-label="Ordenar">
+          <span class="segmented__ind" aria-hidden="true"></span>
+          <button class="is-on" data-sort="recentes">Recentes</button>
+          <button data-sort="visitas">Mais visitas</button>
+          <button data-sort="gasto">Maior gasto</button>
+          <button data-sort="az">A–Z</button>
+        </div>
+        <p class="muted small list-count" id="clientes-count"></p>
+        <div class="client-list" id="client-list"></div>
+      </section>
+
+      <!-- ========== FINANCEIRO ========== -->
+      <section class="view" id="view-financeiro" data-title="Financeiro">
+        <div class="monthbar">
+          <button class="icon-btn" data-month="-1" aria-label="Mês anterior"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
+          <div class="monthbar__center">
+            <p class="eyebrow">Período</p>
+            <h2 class="monthbar__title" id="month-title">—</h2>
+          </div>
+          <button class="icon-btn" data-month="1" aria-label="Próximo mês"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
+        </div>
+        <div class="kpis" id="kpis"></div>
+        <div class="fin-grid">
+          <div class="card chart-card">
+            <div class="card__head">
+              <div><h3 class="card__title">Faturamento por dia</h3><p class="muted small">Toque numa barra para ver o dia</p></div>
+              <div class="legend"><span><i class="lg lg--rec"></i>Recebido</span><span><i class="lg lg--prev"></i>A receber</span></div>
+            </div>
+            <div class="daychart" id="daychart"></div>
+            <div class="chart-tip" id="chart-tip" hidden></div>
+          </div>
+          <div class="card">
+            <div class="card__head"><div><h3 class="card__title">Por procedimento</h3><p class="muted small">Recebido + a receber no mês</p></div></div>
+            <div class="bars" id="proc-bars"></div>
+          </div>
+        </div>
+        <button class="btn btn--outline" data-action="exportar-mes"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>Baixar planilha do mês</button>
+      </section>
+
+      <!-- ========== AJUSTES ========== -->
+      <section class="view" id="view-ajustes" data-title="Ajustes">
+        <div class="settings">
+          <div class="card setting">
+            <div class="setting__icon"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13l2 2 4-4"/></svg></div>
+            <div class="setting__body">
+              <h3 class="card__title">Importar planilha</h3>
+              <p class="muted small">Aceita .xlsx, .xls e .csv, inclusive o relatório baixado do sistema antigo. Registros que já existem são ignorados.</p>
+              <label class="dropzone" id="dropzone">
+                <input type="file" id="file-excel" accept=".xlsx,.xls,.csv,.ods" hidden />
+                <span class="dropzone__icon"><svg viewBox="0 0 24 24"><path d="M12 16V4m0 0-4 4m4-4 4 4M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg></span>
+                <strong>Escolher arquivo</strong>
+                <span class="muted small">ou arraste e solte aqui</span>
+              </label>
+              <div id="import-preview"></div>
+            </div>
+          </div>
+
+          <div class="card setting">
+            <div class="setting__icon"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"/></svg></div>
+            <div class="setting__body">
+              <h3 class="card__title">Importação rápida por texto</h3>
+              <p class="muted small">Uma por linha: <code>Nome, Procedimento, Data, Hora, Valor</code></p>
+              <textarea id="campo-importar" class="input textarea" rows="3" placeholder="Maria Souza, Botox, 25/11, 14:00, 1200"></textarea>
+              <button class="btn btn--dark" data-action="importar-texto">Processar texto</button>
+            </div>
+          </div>
+
+          <div class="card setting">
+            <div class="setting__icon"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></div>
+            <div class="setting__body">
+              <h3 class="card__title">Exportar</h3>
+              <p class="muted small">Planilha .xlsx com todos os agendamentos deste setor.</p>
+              <button class="btn btn--outline" data-action="exportar-tudo">Baixar planilha completa</button>
+            </div>
+          </div>
+
+          <div class="card setting">
+            <div class="setting__icon"><svg viewBox="0 0 24 24"><path d="M12 2.5 14.6 9H21l-5.2 4 2 6.5L12 15.6 6.2 19.5l2-6.5L3 9h6.4z"/></svg></div>
+            <div class="setting__body">
+              <h3 class="card__title">Procedimentos e valores</h3>
+              <p class="muted small">Atalhos que aparecem ao agendar. O valor é sugerido na hora e pode ser alterado.</p>
+              <div id="proc-editor"></div>
+              <button class="btn btn--ghost btn--sm" data-action="add-proc"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Adicionar procedimento</button>
+            </div>
+          </div>
+
+          <div class="card setting setting--danger">
+            <div class="setting__icon"><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
+            <div class="setting__body">
+              <h3 class="card__title">Zona de perigo</h3>
+              <p class="muted small">Apaga todos os agendamentos deste setor. Baixe a planilha antes.</p>
+              <button class="btn btn--danger" data-action="limpar">Limpar banco de dados</button>
+            </div>
+          </div>
+
+          <button class="btn btn--outline settings__logout" data-action="sair"><svg viewBox="0 0 24 24"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 17l5-5-5-5M15 12H3"/></svg>Sair da conta</button>
+          <p class="muted small center" id="app-version"></p>
+        </div>
+      </section>
+    </div>
+
+    <!-- Bottom nav (celular) -->
+    <nav class="bottomnav" aria-label="Navegação">
+      <span class="bottomnav__ind" aria-hidden="true"><i></i></span>
+      <button class="bottomnav__item is-active" data-view="agenda"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Agenda</span></button>
+      <button class="bottomnav__item" data-view="clientes"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c1.2-3.6 3.7-5.5 6.5-5.5s5.3 1.9 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18.5 14.8c1.4.9 2.4 2.6 3 5.2"/></svg><span>Clientes</span></button>
+      <span class="bottomnav__slot"><button class="bottomnav__fab" data-action="novo" aria-label="Novo agendamento"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></span>
+      <button class="bottomnav__item" data-view="financeiro"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><rect x="5" y="11" width="3" height="6" rx="1"/><rect x="10.5" y="6" width="3" height="11" rx="1"/><rect x="16" y="13" width="3" height="4" rx="1"/></svg><span>Financeiro</span></button>
+      <button class="bottomnav__item" data-view="ajustes"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg><span>Ajustes</span></button>
+    </nav>
+  </div>
+
+  <!-- Painel (bottom sheet no celular / modal no computador) -->
+  <div class="sheet" id="sheet" hidden>
+    <div class="sheet__backdrop" data-close></div>
+    <div class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+      <div class="sheet__grab" aria-hidden="true"><span class="sheet__handle"></span></div>
+      <header class="sheet__head sheet__grab">
+        <h2 id="sheet-title">—</h2>
+        <button class="icon-btn icon-btn--ghost" data-close aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      </header>
+      <div class="sheet__body" id="sheet-body"></div>
+    </div>
+  </div>
+
+  <div class="splash" id="splash"><div class="logo-shine logo-shine--splash"><img src="assets/logo.svg" alt="" width="76" height="76" /></div></div>
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

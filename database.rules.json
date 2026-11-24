@@ -1,0 +1,55 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "agendamentos": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$id": {
+        ".validate": "newData.hasChildren(['cliente', 'data', 'status'])",
+        "cliente":      { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 160" },
+        "procedimento": { ".validate": "newData.isString() && newData.val().length <= 160" },
+        "data":         { ".validate": "newData.isString() && newData.val().matches(/^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$/)" },
+        "horario":      { ".validate": "newData.isString() && newData.val().matches(/^([0-9][0-9]:[0-9][0-9])?$/)" },
+        "valor":        { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() < 1000000" },
+        "status":       { ".validate": "newData.val() === 'pendente' || newData.val() === 'concluido' || newData.val() === 'cancelado'" },
+        "telefone":     { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "obs":          { ".validate": "newData.isString() && newData.val().length <= 2000" },
+        "criadoPor":    { ".validate": "newData.isString() && newData.val().length <= 80" },
+        "origem":       { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "criadoEm":     { ".validate": "newData.isNumber()" },
+        "atualizadoEm": { ".validate": "newData.isNumber()" },
+        "importadoEm":  { ".validate": "newData.isNumber()" },
+        "$outro":       { ".validate": false }
+      }
+    },
+
+    "pilates": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$id": {
+        ".validate": "newData.hasChildren(['cliente', 'data', 'status'])",
+        "cliente":      { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 160" },
+        "procedimento": { ".validate": "newData.isString() && newData.val().length <= 160" },
+        "data":         { ".validate": "newData.isString() && newData.val().matches(/^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]$/)" },
+        "horario":      { ".validate": "newData.isString() && newData.val().matches(/^([0-9][0-9]:[0-9][0-9])?$/)" },
+        "valor":        { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() < 1000000" },
+        "status":       { ".validate": "newData.val() === 'pendente' || newData.val() === 'concluido' || newData.val() === 'cancelado'" },
+        "telefone":     { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "obs":          { ".validate": "newData.isString() && newData.val().length <= 2000" },
+        "criadoPor":    { ".validate": "newData.isString() && newData.val().length <= 80" },
+        "origem":       { ".validate": "newData.isString() && newData.val().length <= 40" },
+        "criadoEm":     { ".validate": "newData.isNumber()" },
+        "atualizadoEm": { ".validate": "newData.isNumber()" },
+        "importadoEm":  { ".validate": "newData.isNumber()" },
+        "$outro":       { ".validate": false }
+      }
+    },
+
+    "configuracoes": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    }
+  }
+}
